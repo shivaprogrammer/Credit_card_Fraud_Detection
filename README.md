@@ -30,7 +30,7 @@ Please download it from Kaggle and place it in a `data/` folder before running t
 ## ⚙️ Methodology
 
 ### Flow Diagram
-![Flow Diagram](images/flow_diagram.png)
+![Flow Diagram](Screenshots/flow_diagram.png)
 
 Steps:
 1. **Data Splitting** → Train (80%) + Test (20%)  
