@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 Credit card fraud is a critical financial crime that leads to significant losses for banks and consumers.  
-This project focuses on building an **end-to-end fraud detection pipeline** using **Machine Learning** and **Deep Learning** techniques.  
+This project focuses on building an **end-to-end fraud detection pipeline** using **Machine Learning**  techniques.  
 
 The solution includes:
 - **Exploratory Data Analysis (EDA)** to understand fraud patterns  
