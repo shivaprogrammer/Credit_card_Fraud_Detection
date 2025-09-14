@@ -106,7 +106,7 @@ Steps:
 ---
 ## 🖥️ Streamlit Application
 
-We built an interactive **Streamlit dashboard** to:  
+Built an interactive **Streamlit dashboard** to:  
 ✅ Upload transactions and check fraud probability  
 ✅ Compare models on ROC/PR curves  
 ✅ Visualize EDA  
