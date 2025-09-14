@@ -1,5 +1,3 @@
-# fraud_detection_app.py
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -19,27 +17,24 @@ try:
 except ImportError:
     shap_available = False
 
-# =============================
+
 # 1. Load Artifacts
-# =============================
 @st.cache_resource
 def load_artifacts():
-    scaler = joblib.load("scaler.pkl")
-    feature_names = joblib.load("feature_names.pkl")
-    default_model = joblib.load("random_forest_smote_fraud_model.pkl")  # update if needed
+    scaler = joblib.load("Models/scaler.pkl")
+    feature_names = joblib.load("Models/feature_names.pkl")
+    default_model = joblib.load("Models/random_forest_smote_fraud_model.pkl")  # update if needed
     return scaler, feature_names, default_model
 
 scaler, feature_names, model = load_artifacts()
 
-# =============================
+
 # 2. Sidebar Navigation
-# =============================
 st.sidebar.title("📌 Navigation")
 page = st.sidebar.radio("Go to", ["Home", "EDA", "Predict Fraud", "Compare Models"])
 
-# =============================
+
 # 3. Home Page
-# =============================
 if page == "Home":
     st.title("💳 Credit Card Fraud Detection")
     st.markdown("""
@@ -53,9 +48,8 @@ if page == "Home":
     - Adjustable fraud threshold slider
     """)
 
-# =============================
+
 # 4. EDA Page
-# =============================
 elif page == "EDA":
     st.title("📊 Exploratory Data Analysis")
 
@@ -134,9 +128,9 @@ elif page == "EDA":
     else:
         st.info("Please upload the dataset to see EDA.")
 
-# =============================
+
 # 5. Prediction Page
-# =============================
+
 elif page == "Predict Fraud":
     st.title("🤖 Fraud Prediction")
 
@@ -159,7 +153,7 @@ elif page == "Predict Fraud":
             prob = model.predict_proba(df_input)[0][1]
             pred = 1 if prob >= threshold else 0
 
-            st.write(f"### Prediction: {'🚨 Fraud' if pred==1 else '✅ Not Fraud'}")
+            st.write(f"### Prediction: {'🚨 Fraud' if pred==1 else 'Not Fraud'}")
             st.write(f"Fraud Probability: **{prob:.4f}** (Threshold = {threshold})")
 
             if shap_available:
@@ -205,9 +199,9 @@ elif page == "Predict Fraud":
                 csv_out = df_input.to_csv(index=False).encode("utf-8")
                 st.download_button("Download Predictions", data=csv_out, file_name="fraud_predictions.csv", mime="text/csv")
 
-# =============================
+
 # 6. Compare Models Page
-# =============================
+
 elif page == "Compare Models":
     st.title("📈 Compare Models (ROC & PR Curves)")
 
@@ -227,7 +221,7 @@ elif page == "Compare Models":
             X_test[["Time", "Amount"]] = scaler.transform(X_test[["Time", "Amount"]])
 
             # Load all models
-            model_files = glob.glob("*_fraud_model.pkl")
+            model_files = glob.glob("Models/*_fraud_model.pkl")
             metrics = []
 
             fig_roc, ax_roc = plt.subplots()
