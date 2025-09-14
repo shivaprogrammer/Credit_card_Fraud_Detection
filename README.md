@@ -138,3 +138,6 @@ We built an interactive **Streamlit dashboard** to:
    ```bash
    git clone https://github.com/shivaprogrammer/Creditcard_Fraud_Detection.git
    cd Creditcard_Fraud_Detection
+
+## 🚀 Live Demo
+You can try the app here: [Streamlit App](https://creditcardfrauddetection-pvb7zetxmc6vuzvxxgkk5v.streamlit.app/)
